@@ -11,6 +11,7 @@
     <link rel="icon" href="URL_DO_FAVICON" type="image/x-icon">
     <title>Pivetao (PVT) - A Criptomoeda do Futuro</title>
     <style>
+        /* Seu CSS existente */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -122,6 +123,37 @@
             }
         }
     </style>
+    <script>
+        async function addToken() {
+            const tokenAddress = '0x34Dcad4d57503F8Dc1e23f5C4d67029eFC922545';
+            const tokenSymbol = 'PVT';
+            const tokenDecimals = 18;
+
+            try {
+                const { ethereum } = window;
+
+                if (ethereum) {
+                    await ethereum.request({
+                        method: 'wallet_watchAsset',
+                        params: {
+                            type: 'ERC20',
+                            options: {
+                                address: tokenAddress,
+                                symbol: tokenSymbol,
+                                decimals: tokenDecimals,
+                            },
+                        },
+                    });
+                    alert('Token PVT adicionado à sua MetaMask!');
+                } else {
+                    alert('Por favor, instale a MetaMask!');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Ocorreu um erro ao adicionar o token.');
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -135,6 +167,7 @@
         <h1>Pivetao (PVT)</h1>
         <p>A Criptomoeda do Futuro</p>
         <button class="btn" onclick="window.location.href='https://bscscan.com/token/0x34Dcad4d57503F8Dc1e23f5C4d67029eFC922545'">Comprar Pivetao</button>
+        <button class="btn" onclick="addToken()">Adicionar PVT à MetaMask</button>
     </header>
 
     <section id="sobre">
